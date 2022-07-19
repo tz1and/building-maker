@@ -92,30 +92,34 @@ const buildGui = () => {
   textStyle.fontStyle = 'bold'
 
   const PADDING = '10px'
+  const OUTER_PADDING = '15px'
 
   // Add a rectangle for behind the UI elements
   const guiRect = new GUI.Rectangle()
+  guiRect.adaptHeightToChildren = true
   guiRect.adaptWidthToChildren = true
-  guiRect.width = '220px'
-  guiRect.height = '580px'
   guiRect.cornerRadius = 10
   guiRect.color = 'Orange'
   guiRect.thickness = 2
   guiRect.background = 'black'
   guiRect.horizontalAlignment = GUI.Control.HORIZONTAL_ALIGNMENT_RIGHT
   guiRect.verticalAlignment = GUI.Control.VERTICAL_ALIGNMENT_TOP
-  guiRect.top = '0px'
-  guiRect.left = '0px'
-  guiRect.paddingRight = '1px'
+  guiRect.top = '10px'
+  guiRect.left = '-10px'
+  //guiRect.paddingRight = '1px'
   advancedTexture.addControl(guiRect)
 
   // Stack the UI elements vertically
   const panel = new GUI.StackPanel()
-  panel.width = '200px'
+  panel.width = '210px'
+  panel.paddingLeft = OUTER_PADDING
+  panel.paddingRight = OUTER_PADDING
+  //panel.paddingTop = OUTER_PADDING
+  panel.paddingBottom = OUTER_PADDING
   panel.isVertical = true
   panel.horizontalAlignment = GUI.Control.HORIZONTAL_ALIGNMENT_RIGHT
   panel.verticalAlignment = GUI.Control.VERTICAL_ALIGNMENT_TOP
-  advancedTexture.addControl(panel)
+  guiRect.addControl(panel)
 
   // Let the user enter the tz1and place ID
   const placeIdText = new GUI.TextBlock()
@@ -165,8 +169,6 @@ const buildGui = () => {
   colorPicker.width = '150px'
   colorPicker.horizontalAlignment = GUI.Control.HORIZONTAL_ALIGNMENT_LEFT
   colorPicker.onValueChangedObservable.add((value) => {
-    buildingMaterial.baseColor.copyFrom(value)
-    buildingMaterial.baseColor.copyFrom(value)
     buildingMaterial.baseColor.copyFrom(value)
   })
   colorPicker.paddingBottom = PADDING
@@ -224,7 +226,7 @@ const buildGui = () => {
       }
     })
 
-    const header = GUI.Control.AddHeader(button, text, '180px', { isHorizontal: true, controlFirst: true })
+    const header = GUI.Control.AddHeader(button, text, '150px', { isHorizontal: true, controlFirst: true })
     header.height = '30px'
     header.color = 'white'
     header.style = textStyle
@@ -283,7 +285,7 @@ const buildGui = () => {
       }
     })
 
-    const header = GUI.Control.AddHeader(button, text, '180px', { isHorizontal: true, controlFirst: true })
+    const header = GUI.Control.AddHeader(button, text, '150px', { isHorizontal: true, controlFirst: true })
     header.height = '30px'
     header.color = 'white'
     header.style = textStyle
@@ -299,7 +301,7 @@ const buildGui = () => {
 
   // Provide a button to download the building as a .glb file
   const downloadButton = GUI.Button.CreateSimpleButton('button', 'Download .glb')
-  downloadButton.width = 0.8
+  downloadButton.width = 1
   downloadButton.height = '40px'
   downloadButton.color = 'white'
   downloadButton.background = 'green'
