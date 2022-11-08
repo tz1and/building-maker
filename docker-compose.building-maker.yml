@@ -8,8 +8,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    ports:
-      - 9054:9054
+    # We don't need this port open in prod, but if you do:
+    #ports:
+    #  - "127.0.0.1:9054:9054"
 
 networks:
   default:
