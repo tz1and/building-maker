@@ -1,5 +1,5 @@
 docker-build:
-	docker-compose -f docker-compose.building-maker.yml build
+	docker-compose -f docker-compose.building-maker.yml build --pull
 
 docker-up:
 	docker-compose -f docker-compose.building-maker.yml up -d
