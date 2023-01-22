@@ -360,10 +360,10 @@ const buildPlaceBounds = async () => {
   removeMesh(place)
   placeMetadata = null
 
-  // https://api.tzkt.io/v1/tokens?contract=KT1G6bH9NVDp8tSSz7FzDUnCgbJwQikxtUog&tokenId=97
+  // https://api.tzkt.io/v1/tokens?contract=KT1AxxoqSJ8BfjCMZ3iQxAJXj1nabZWx9xkb&tokenId=97
   try {
     // Get the place metadata from tz1and Places smart contract storage
-    const tzktResponse = await axios.get(`https://api.tzkt.io/v1/tokens?contract=KT1G6bH9NVDp8tSSz7FzDUnCgbJwQikxtUog&tokenId=${placeId}`)
+    const tzktResponse = await axios.get(`https://api.tzkt.io/v1/tokens?contract=KT1AxxoqSJ8BfjCMZ3iQxAJXj1nabZWx9xkb&tokenId=${placeId}`)
     if (tzktResponse && tzktResponse.data && tzktResponse.data.length > 0) {
       placeMetadata = tzktResponse.data[0].metadata
       // Render an extruded bounds polygon
